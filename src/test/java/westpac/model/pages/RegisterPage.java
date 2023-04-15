@@ -43,10 +43,15 @@ public class RegisterPage extends BasePage<RegisterPage> {
     }
 
     public String getErrorMessage() {
-        var errorMsg = new WebDriverWait(driver, Duration.ofSeconds(5))
-            .until(d -> d.findElement(By.className("alert-danger")))
+        return new WebDriverWait(driver, Duration.ofSeconds(3))
+            .until(d -> d.findElement(By.className("result")))
             .getText();
-        return errorMsg;
+    }
+
+    public String getSuccessMessage(){
+        return new WebDriverWait(driver, Duration.ofSeconds(3))
+            .until(d -> d.findElement(By.className("alert-success")))
+            .getText();
     }
 
 

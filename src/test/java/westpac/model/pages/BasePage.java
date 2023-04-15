@@ -1,7 +1,10 @@
 package westpac.model.pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage<T> {
     protected WebDriver driver;
@@ -26,7 +29,13 @@ public abstract class BasePage<T> {
     }
 
     public String getLoginName() {
-        return driver.findElement(By.className("disabled")).getText();
+        return new WebDriverWait(driver, Duration.ofSeconds(3))
+            .until(d -> d.findElement(By.className("disabled")))
+            .getText();
+    }
+
+    public String getLoginError() {
+        return driver.findElement(By.className("label-warning")).getText();
     }
 
     public RegisterPage clickRegisterMenu() {

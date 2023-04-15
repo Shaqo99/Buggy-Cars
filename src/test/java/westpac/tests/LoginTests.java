@@ -9,18 +9,21 @@ import westpac.model.pages.HomePage;
 public class LoginTests extends BaseTests{
     
     @Test
-        void loginUser() {
-            var loginName = open(HomePage.class)
+    void successfulLogin() {
+        var loginName = open(HomePage.class)
             .setUsername("unichem")
             .setPassword("Hellooooo1!")
             .clickLoginButton();
         assertEquals("Hi, bug", loginName.getLoginName());
-        }
+    }
 
-
-
-
-
-
-        
+    @Test
+    void unsuccessfulLogin(){
+        var loginMsg = open(HomePage.class)
+            .setUsername("unichem")
+            .setPassword("Helloooo")
+            .clickLoginButton();
+        assertEquals("Invalid username/password", loginMsg.getLoginError());
+    }
+    
 }
