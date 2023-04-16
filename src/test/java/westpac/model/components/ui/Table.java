@@ -6,12 +6,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import westpac.model.pages.OverallRatingPage;
+
 public class Table{
     private WebElement rootElement;
+    public WebDriver driver;
 
     public Table(WebElement rootElement) {
         this.rootElement = rootElement;
     }
+
+    OverallRatingPage overallRatingPage = new OverallRatingPage(driver);
+
 
     public WebElement getCell(String searchColumn, String searchValue, String returnColumn) {
         var searchColumnIndex = getColumnIndex(searchColumn);
@@ -22,9 +28,10 @@ public class Table{
             var cells = row.findElements(By.tagName("td"));
             if(cells.get(searchColumnIndex).getText().equals(searchValue)) {
                 return cells.get(returnColumnIndex);
-            } else {
-                //driver.findElement(By.className("btn")).click();
-            }
+            } 
+            //else {
+            //     overallRatingPage.clickNextButton();
+            // }
         } 
         throw new RuntimeException("Value for searchColumn: '"+searchColumn+"', returnColumn: '"+returnColumn+"', searchValue: '"+searchValue+"' not found");
     }

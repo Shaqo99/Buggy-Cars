@@ -8,12 +8,16 @@ import westpac.model.pages.HomePage;
 
 public class OverallRatingTests extends BaseTests{
 
+    public static String carModel = "Diablo";
+    public static String carMakeString = "Lamborghini";
+
+
     @Test
     void searchForCarMake() {
-        var dumb = open(HomePage.class)
+        var carMake = open(HomePage.class)
             .clickOverallRatingPage();
             
-        assertEquals("Alfa Romeo", dumb.getMake("Rally 037"));
+        assertEquals(carMakeString, carMake.getMake(carModel));
     
     }    
 

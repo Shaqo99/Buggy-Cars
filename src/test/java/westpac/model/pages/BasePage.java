@@ -4,18 +4,19 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage<T> {
-    protected static WebDriver driver;
+    protected WebDriver driver;
+
+    private By loginUsername = By.name("login");
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }
 
     public BasePage<T> setUsername(String username) {
-        driver.findElement(By.name("login")).sendKeys(username);
+        driver.findElement(loginUsername).sendKeys(username);
         return this;
     }
 
@@ -27,6 +28,21 @@ public abstract class BasePage<T> {
     public BasePage<T> clickLoginButton() {
         driver.findElement(By.className("btn-success")).click();
         return this;
+    }
+    
+    public BasePage<T> clickLogoutButton() {
+        driver.findElement(By.linkText("Logout")).click();
+        return this;
+    }
+
+    public boolean getLoginUsernameField() {
+        if(driver.findElement(loginUsername).isDisplayed()){
+            return true;
+        }
+        else {
+            return false;
+        }
+        
     }
 
     public String getLoginName() {
@@ -53,6 +69,12 @@ public abstract class BasePage<T> {
         driver.findElement(By.xpath("//a[@href='/overall']")).click();
         return new OverallRatingPage(driver);
     }
+
+    public PopularMakePage clickPopularMakePage() {
+        driver.findElement(By.xpath("//a[@href='/make/c4u1mqnarscc72is00ng']")).click();
+        return new PopularMakePage(driver);
+    }
+
     
 
 
