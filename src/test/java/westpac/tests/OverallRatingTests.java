@@ -8,12 +8,12 @@ import westpac.model.pages.HomePage;
 
 public class OverallRatingTests extends BaseTests{
 
-    public static String carModel = "Diablo";
-    public static String carMakeString = "Lamborghini";
+    public static String carModel = "Giulietta";
+    public static String carMakeString = "Alfa Romeo";
 
 
     @Test
-    void searchForCarMake() {
+    void searchForCarMakeTest() {
         var carMake = open(HomePage.class)
             .clickOverallRatingPage();
             

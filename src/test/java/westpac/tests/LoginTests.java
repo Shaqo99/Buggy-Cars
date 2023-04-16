@@ -9,7 +9,7 @@ import westpac.model.pages.HomePage;
 
 public class LoginTests extends BaseTests{
     
-    public static String username = "Max";
+    public static String username = "BarryJ";
     public static String password = "Hellooooo1!";
     public static String incorrectPassword = "Hellooooo1!";
     public static String gender = "Male";
@@ -19,7 +19,7 @@ public class LoginTests extends BaseTests{
     public static String hobby = "Reading Comics"; 
 
     @Test
-    void successfulLogin() {
+    void successfulLoginTest() {
         var loginName = open(HomePage.class)
             .setUsername(username)
             .setPassword(password)
@@ -28,7 +28,7 @@ public class LoginTests extends BaseTests{
     }
 
     @Test
-    void unsuccessfulLogin(){
+    void unsuccessfulLoginTest(){
         var loginMsg = open(HomePage.class)
             .setUsername(username)
             .setPassword(incorrectPassword)
@@ -37,16 +37,16 @@ public class LoginTests extends BaseTests{
     }
 
     @Test
-    void LogoutUser(){
-        successfulLogin();
+    void LogoutUserTest(){
+        successfulLoginTest();
         var logout = open(HomePage.class)
            .clickLogoutButton();
         assertTrue(logout.getLoginUsernameField(), "Logout button is not displayed" );
     }
 
     @Test
-    void editProfile(){
-        successfulLogin();
+    void editProfileTest(){
+        successfulLoginTest();
         var editProfile = open(HomePage.class)
             .clickProfileMenu()
             .setGender(gender)
@@ -58,7 +58,5 @@ public class LoginTests extends BaseTests{
         assertEquals("The profile has been saved successful", editProfile.getSaveMessage());
  
     }
-
-    
     
 }

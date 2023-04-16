@@ -5,15 +5,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import westpac.model.pages.HomePage;
 
+
+
 public class RegisterTests extends BaseTests{
 
-    public static String username = "FredLo";
-    public static String firstName = "Fred";
-    public static String lastName = "Long";
+    public static String username = "ILoveWestpac";
+    public static String firstName = "West";
+    public static String lastName = "Pac";
     public static String password = "Hellooooo1!";
 
+    
     @Test
-    void registerNewUser() {
+    void registerNewUserTest() {
         var user = open(HomePage.class)
             .clickRegisterMenu()
             .setLogin(username)
@@ -26,7 +29,7 @@ public class RegisterTests extends BaseTests{
     }
 
     @Test
-    void registerExistingUser() {
+    void registerUserExistingTest() {
         var user = open(HomePage.class)
             .clickRegisterMenu()
             .setLogin(username)
@@ -37,6 +40,8 @@ public class RegisterTests extends BaseTests{
             .clickRegister();
         assertEquals("UsernameExistsException: User already exists", user.getErrorMessage());    
     }
+
+    
         
     
 }

@@ -10,7 +10,7 @@ public class PopularMakeTests extends BaseTests{
 
     public static String popularMake = "Alfa Romeo";
     @Test
-    void validatePopularMake() {
+    void validatePopularMakeTest() {
         var popMake = open(HomePage.class)
             .clickPopularMakePage();
         assertEquals(popularMake, popMake.getCurrentPopularMake());

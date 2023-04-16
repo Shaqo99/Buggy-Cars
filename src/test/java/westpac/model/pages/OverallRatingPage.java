@@ -22,22 +22,12 @@ public class OverallRatingPage extends BasePage<OverallRatingPage> {
         return carsTable;
     }
 
-    public OverallRatingPage clickNextButton(){
-        driver.findElement(By.className("btn")).click();
+    public OverallRatingPage clickNextButton(WebDriver driver){
+        driver.findElement(By.linkText("»")).click();
         return this;
     }
     public String getMake(String model){
         var makeCell = getTable().getCell("Model", model, "Make");
-        // if (makeCell.isDisplayed()){
-        //     String makeCellValueAsString = makeCell.getText();
-        //     return makeCellValueAsString;
-        // }
-        // else {
-        //     driver.findElement(By.linkText("»")).click();
-        // }
-        // return null;
-        
-        //var makeCellValueAsString = makeCell.findElement(By.tagName("input")).getAttribute("value");
         var makeCellValueAsString = makeCell.getText();
         return makeCellValueAsString;
     }
