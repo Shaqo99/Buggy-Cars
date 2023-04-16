@@ -11,9 +11,9 @@ public class RegisterTests extends BaseTests{
     void registerNewUser() {
         var user = open(HomePage.class)
             .clickRegisterMenu()
-            .setLogin("Vax")
-            .setFirstName("Vax")
-            .setLastName("Vaxo")
+            .setLogin("Max")
+            .setFirstName("Max")
+            .setLastName("Maxo")
             .setPassword("Hellooooo1!")
             .setConfirmPassword("Hellooooo1!")
             .clickRegister();
