@@ -1,5 +1,4 @@
-# buggycars 
-Buggy Cars Rating project
+# Buggy Cars Rating project
 
 This project was done to automate the functionalities of the system under test using Selenium Java
 
